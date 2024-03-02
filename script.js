@@ -1,6 +1,6 @@
 let xp = 0;
 let health = 100;
-let gold = 30;
+let gold = 10;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
