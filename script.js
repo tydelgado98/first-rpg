@@ -1,6 +1,7 @@
 let xp = 0;
 let health = 100;
 let gold = 10;
+let weaponPrice = 30;
 let currentWeapon = 0;
 let fighting;
 let monsterHealth;
@@ -54,9 +55,10 @@ const locations = [
     text: "You are in the town square. You see a sign that says \"Store\"."
   },
   {
+    // how do we get the buy weapon to update on the current price?
     name: "store",
-    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
-    "button functions": [buyHealth, buyWeapon, goTown],
+    "button text": ["Buy 10 health (10 gold)" , "Buy weapon for " + weaponPrice + " gold", "Go to town square", "Inventory"],
+    "button functions": [buyHealth, buyWeapon, goTown, inventoryCheck],
     text: "You enter the store."
   },
   {
@@ -120,7 +122,9 @@ function goTown() {
 }
 
 function goStore() {
+
   update(locations[1]);
+  button4.style.display = "inline";
 }
 
 function goCave() {
@@ -139,16 +143,31 @@ function buyHealth() {
   }
 }
 
+
 function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
-    if (gold >= 30) {
-      gold -= 30;
+    if (gold >= weaponPrice) {
+      gold -= weaponPrice;
       currentWeapon++;
       goldText.innerText = gold;
       let newWeapon = weapons[currentWeapon].name;
       text.innerText = "You now have a " + newWeapon + ".";
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
+      weaponPrice += 30;
+      inventoryCheck();
+ // Update the "Buy Weapon" button text directly in the store location
+
+ const storeIndex = locations.findIndex(location => location.name === "store");
+ // the store index is the index of the store location in the locations array
+
+ if (storeIndex !== -1) {  // if the store location is found
+   locations[storeIndex]["button text"][1] = "Buy Weapon for " + weaponPrice + " gold";
+ } // update the button text for the "Buy Weapon" button in the store location
+
+
+      button2.innerText = "Buy weapon for " + weaponPrice + " gold";
+     
     } else {
       text.innerText = "You do not have enough gold to buy a weapon.";
     }
@@ -158,6 +177,16 @@ function buyWeapon() {
     button2.onclick = sellWeapon;
   }
 }
+
+function inventoryCheck() {
+ text.innerText = "You now have a " + weapons[currentWeapon].name + ".";
+}
+
+
+// Function declaration for getBuyWeaponButtonText
+
+
+
 
 function sellWeapon() {
   if (inventory.length > 1) {
