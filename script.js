@@ -22,7 +22,7 @@ const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
   { name: 'claw hammer', power: 50 },
-  { name: 'sword', power: 100 }
+  { name: 'sword', power: 75 }
 ];
 const monsters = [
   {
@@ -125,7 +125,7 @@ function goStore() {
 
 function goCave() {
   update(locations[2]);
-  button4.style.display = "block";
+  button4.style.display = "inline";
 }
 
 function buyHealth() {
