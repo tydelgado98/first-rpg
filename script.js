@@ -118,6 +118,7 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  button3.style.display = "inline";
   button4.style.display = "none";
 }
 
@@ -217,6 +218,7 @@ function fightGuard() {
   goFight();
 }
 function fightDragon() {
+  button3.style.display = "none";
   fighting = 2;
   goFight();
 }
