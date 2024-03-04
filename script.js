@@ -58,7 +58,7 @@ const locations = [
   {
     // how do we get the buy weapon to update on the current price?
     name: "store",
-    "button text": ["Buy 10 health (10 gold)" , "Buy weapon for " + weaponPrice + " gold", "Go to town square", "Inventory"],
+    "button text": ["Buy 15 health (20 gold)" , "Buy weapon for " + weaponPrice + " gold", "Go to town square", "Inventory"],
     "button functions": [buyHealth, buyWeapon, goTown, inventoryCheck],
     text: "You enter the store."
   },
@@ -75,7 +75,7 @@ const locations = [
     text: "You are fighting a monster."
   },{
     name: "kill monster",
-    "button text": ["Go back to cave", "Go to town square", "Go to town square"],
+    "button text": ["Go back to cave", "Go to town square", "Casino"],
     "button functions": [goCave, goTown, easterEgg],
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
   },
@@ -95,7 +95,7 @@ const locations = [
     name: "easter egg",
     "button text": ["2", "8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
-    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+    text: "Welcome to the casino! Pick a number 2 or 8. If you they're in the list of 10 random numbers, you win 20 gold. If not, you lose 20 health."
   }
 ];
 
@@ -135,9 +135,9 @@ function goCave() {
 }
 
 function buyHealth() {
-  if (gold >= 10) {
-    gold -= 10;
-    health += 10;
+  if (gold >= 20) {
+    gold -= 20;
+    health += 15;
     goldText.innerText = gold;
     healthText.innerText = health;
   } else {
@@ -276,14 +276,30 @@ function isMonsterHit() {
 function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
 }
+let slimeDefeats = 0;
+
 
 function defeatMonster() {
+  
+    if (monsters[fighting].name === "slime") {
+      slimeDefeats++;
+      if (slimeDefeats === 8) {
+        // Update the button text or hide the button when defeating the slime 5 times
+        const slimeIndex = locations.findIndex(location => location.name === "cave");
+        if (slimeIndex !== -1) {
+          locations[slimeIndex]["button text"][0] = "No more slimes for you!";
+          locations[slimeIndex]["button functions"][0] = undefined;
+        }
+      }
+    }
+ 
   gold += Math.floor(monsters[fighting].level * 6.7);
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
 }
+
 
 function lose() {
   update(locations[5]);
@@ -332,7 +348,7 @@ function pick(guess) {
     goldText.innerText = gold;
   } else {
     text.innerText += "Wrong! You lose 10 health!";
-    health -= 10;
+    health -= 20;
     healthText.innerText = health;
     if (health <= 0) {
       lose();
