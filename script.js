@@ -1,6 +1,6 @@
-let xp = 8;
+let xp = 0;
 let health = 100;
-let gold = 10;
+let gold = 20;
 let weaponPrice = 30;
 let currentWeapon = 0;
 let fighting;
@@ -30,7 +30,7 @@ const monsters = [
   {
     name: "slime",
     level: 2,
-    health: 15
+    health: 10
   },
   {
     name: "fanged beast",
@@ -264,7 +264,7 @@ function attack() {
 }
 
 function getMonsterAttackValue(level) {
-  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  const hit = (level * 4) - (Math.floor(Math.random() * xp));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
@@ -300,14 +300,14 @@ function defeatMonster() {
 
     if (xp >= 10) {
         xp += adjustedXPGain;
-        health += 10;
     } else {
         xp += originalXPGain;
     }
-
+    health += 10;
     healthText.innerText = health;
     xpText.innerText = xp;
-
+    killIndex = locations.findIndex(location => location.name === "kill monster");
+    locations[killIndex].text = "You killed The " + monsters[fighting].name + ". You gain " + originalXPGain + " experience points and find gold.";
     gold += Math.floor(monsters[fighting].level * 6.7);
     goldText.innerText = gold;
     update(locations[4]);
@@ -326,7 +326,7 @@ function winGame() {
 function restart() {
   xp = 0;
   health = 100;
-  gold = 10;
+  gold = 20;
   currentWeapon = 0;
   inventory = ["stick"];
   goldText.innerText = gold;
