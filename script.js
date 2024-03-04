@@ -1,4 +1,4 @@
-let xp = 0;
+let xp = 8;
 let health = 100;
 let gold = 10;
 let weaponPrice = 30;
@@ -292,13 +292,27 @@ function defeatMonster() {
         }
       }
     }
- 
-  gold += Math.floor(monsters[fighting].level * 6.7);
-  xp += monsters[fighting].level;
-  goldText.innerText = gold;
-  xpText.innerText = xp;
-  update(locations[4]);
+    const originalXPGain = Math.floor(monsters[fighting].level);
+    const adjustedXPGain = Math.floor(monsters[fighting].level * 0.5);
+
+    console.log(`Original XP Gain: ${originalXPGain}`);
+    console.log(`Adjusted XP Gain: ${adjustedXPGain}`);
+
+    if (xp >= 10) {
+        xp += adjustedXPGain;
+        health += 10;
+    } else {
+        xp += originalXPGain;
+    }
+
+    healthText.innerText = health;
+    xpText.innerText = xp;
+
+    gold += Math.floor(monsters[fighting].level * 6.7);
+    goldText.innerText = gold;
+    update(locations[4]);
 }
+
 
 
 function lose() {
