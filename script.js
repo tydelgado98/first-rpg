@@ -312,7 +312,7 @@ function winGame() {
 function restart() {
   xp = 0;
   health = 100;
-  gold = 50;
+  gold = 10;
   currentWeapon = 0;
   inventory = ["stick"];
   goldText.innerText = gold;
@@ -343,11 +343,11 @@ function pick(guess) {
     text.innerText += numbers[i] + "\n";
   }
   if (numbers.includes(guess)) {
-    text.innerText += "Right! You win 20 gold!";
+    text.innerText += "the number " + guess + " is in the list. You win 20 gold!";
     gold += 20;
     goldText.innerText = gold;
   } else {
-    text.innerText += "Wrong! You lose 10 health!";
+    text.innerText += "the number " + guess + " isnt in the list! You lose 10 health!";
     health -= 20;
     healthText.innerText = health;
     if (health <= 0) {
