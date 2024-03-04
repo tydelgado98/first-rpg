@@ -19,6 +19,7 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const monsterLvl = document.querySelector("#monsterLvl");
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
@@ -220,13 +221,18 @@ function fightGuard() {
 function fightDragon() {
   button3.style.display = "none";
   fighting = 2;
+  
   goFight();
+  text.innerText = " ";
+  text.innerText = "You are fighting the dragon. You can't run from this fight.";
 }
 
 function goFight() {
   update(locations[3]);
+  
   monsterHealth = monsters[fighting].health;
   monsterStats.style.display = "block";
+  monsterLvl.innerText = monsters[fighting].level;
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
 }
