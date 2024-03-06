@@ -361,7 +361,7 @@ function pick(guess) {
     gold += 20;
     goldText.innerText = gold;
   } else {
-    text.innerText += "the number " + guess + " isnt in the list! You lose 10 health!";
+    text.innerText += "the number " + guess + " isnt in the list! You lose 20 health!";
     health -= 20;
     healthText.innerText = health;
     if (health <= 0) {
