@@ -1,20 +1,22 @@
 body {
-  background-color: #0a0a23;
+  background-color: #08190b;
 }
 
 #text {
-  background-color: #0a0a23;
+  background-color: rgb(70, 43, 2);
   color: #ffffff;
-  padding: 13px;
+  padding: 17px;
+  font-size: 22px;
 }
 
 #game {
-  max-width: 40%;
+  max-width: 50%;
   max-height: 900px;
-  background-color: #ffffff;
+  background-color: rgb(240, 186, 106);
   color: #ffffff;
   margin: 200px auto 0px;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 #controls,
@@ -28,10 +30,11 @@ body {
 #stats{
   padding: 10px;
   font-size: 30px;
+  
 }
 #controls {
   display: flex;
-  
+  padding: 10px;
 
 }
 
@@ -46,14 +49,15 @@ body {
 .stat {
   padding-right: 10px;
   padding-left: 10px;
+  
 }
 
 button {
   cursor: pointer;
   color: #0a0a23;
   background-color: #feac32;
-  background-image: linear-gradient(aqua, #ffac33);
-  border: 3px solid hsl(51, 25%, 90%);
+  background-image: linear-gradient(#f5b453, #855d20);
+  border: 3px solid #855d20(51, 25%, 90%);
   font-size: 20px;
   margin-top: 3px;
   margin-bottom: 2px;

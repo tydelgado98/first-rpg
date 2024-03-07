@@ -20,6 +20,7 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 const monsterLvl = document.querySelector("#monsterLvl");
+const monsterStrength = document.querySelector("#monsterStrength");
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 20 },
@@ -273,9 +274,9 @@ function fightDragon() {
 
 function goFight() {
   update(locations[3]);
-  
   monsterHealth = monsters[fighting].health;
   monsterStats.style.display = "block";
+  monsterStrength.innerText = getMonsterAttackValue(monsters[fighting].level);
   monsterLvl.innerText = monsters[fighting].level;
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
@@ -308,7 +309,7 @@ function attack() {
 }
 
 function getMonsterAttackValue(level) {
-  const hit = (level * 4) - (Math.floor(Math.random() * xp));
+  const hit = (level * 2.5) - (Math.floor(Math.random() * xp));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
