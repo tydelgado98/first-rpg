@@ -223,6 +223,8 @@ function fightDragon() {
   fighting = 2;
   
   goFight();
+  monsterStats.style.background = "linear-gradient(to right, #ff0000, #00ff00, #0000ff)";
+  monsterStats.style.color = "white";
   text.innerText = " ";
   text.innerText = "You are fighting the dragon. You can't run from this fight.";
 }
@@ -332,6 +334,7 @@ function restart() {
   goldText.innerText = gold;
   healthText.innerText = health;
   xpText.innerText = xp;
+  monsterStats.style.background = "#c70d0d";
   goTown();
 }
 
