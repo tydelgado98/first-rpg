@@ -58,7 +58,7 @@ const locations = [
   {
     // how do we get the buy weapon to update on the current price?
     name: "store",
-    "button text": ["Buy 15 health (20 gold)" , "Buy weapon for " + weaponPrice + " gold", "Go to town square", "Inventory"],
+    "button text": ["Buy 15 health (20 Yen)" , "Buy weapon for " + weaponPrice + " Yen", "Go to town square", "Inventory"],
     "button functions": [buyHealth, buyWeapon, goTown, inventoryCheck],
     text: "You enter the store."
   },
@@ -77,7 +77,7 @@ const locations = [
     name: "kill monster",
     "button text": ["Go back to cave", "Go to town square", "Casino"],
     "button functions": [goCave, goTown, easterEgg],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find Yen.'
   },
   {
     name: "lose",
@@ -141,7 +141,7 @@ function buyHealth() {
     goldText.innerText = gold;
     healthText.innerText = health;
   } else {
-    text.innerText = "You do not have enough gold to buy health.";
+    text.innerText = "You do not have enough Yen to buy health.";
   }
 }
 
@@ -164,18 +164,18 @@ function buyWeapon() {
  // the store index is the index of the store location in the locations array
 
  if (storeIndex !== -1) {  // if the store location is found
-   locations[storeIndex]["button text"][1] = "Buy Weapon for " + weaponPrice + " gold";
+   locations[storeIndex]["button text"][1] = "Buy Weapon for " + weaponPrice + " Yen";
  } // update the button text for the "Buy Weapon" button in the store location
 
 
-      button2.innerText = "Buy weapon for " + weaponPrice + " gold";
+      button2.innerText = "Buy weapon for " + weaponPrice + " Yen";
      
     } else {
-      text.innerText = "You do not have enough gold to buy a weapon.";
+      text.innerText = "You do not have enough Yen to buy a weapon.";
     }
   } else {
     text.innerText = "You already have the most powerful weapon!";
-    button2.innerText = "Sell weapon for 15 gold";
+    button2.innerText = "Sell weapon for 15 Yen";
     button2.onclick = sellWeapon;
   }
 }
@@ -305,11 +305,11 @@ function defeatMonster() {
     } else {
         xp += originalXPGain;
     }
-    health += 10;
+    health += 4;
     healthText.innerText = health;
     xpText.innerText = xp;
     killIndex = locations.findIndex(location => location.name === "kill monster");
-    locations[killIndex].text = "You killed The " + monsters[fighting].name + ". You gain " + originalXPGain + " experience points and find gold.";
+    locations[killIndex].text = "You killed The " + monsters[fighting].name + ". You gain " + originalXPGain + " experience points and find Yen.";
     gold += Math.floor(monsters[fighting].level * 6.7);
     goldText.innerText = gold;
     update(locations[4]);
