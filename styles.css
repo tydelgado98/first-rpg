@@ -52,8 +52,8 @@ button {
   cursor: pointer;
   color: #0a0a23;
   background-color: #feac32;
-  background-image: linear-gradient(yellow, #ffac33);
-  border: 3px solid hsl(53, 100%, 71%);
+  background-image: linear-gradient(aqua, #ffac33);
+  border: 3px solid hsl(51, 25%, 90%);
   font-size: 20px;
   margin-top: 3px;
   margin-bottom: 2px;

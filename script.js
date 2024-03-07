@@ -22,9 +22,11 @@ const monsterHealthText = document.querySelector("#monsterHealth");
 const monsterLvl = document.querySelector("#monsterLvl");
 const weapons = [
   { name: 'stick', power: 5 },
-  { name: 'dagger', power: 30 },
-  { name: 'claw hammer', power: 50 },
-  { name: 'sword', power: 75 }
+  { name: 'dagger', power: 20 },
+  { name: 'mace', power: 35},
+  { name: 'axe', power: 69 },
+  { name: 'claw hammer', power: 90 },
+  { name: 'sword', power: 125 }
 ];
 const monsters = [
   {
@@ -53,7 +55,7 @@ const locations = [
     name: "town square",
     "button text": ["Go to store", "Go to cave", "Shadowthorn", "Easy Street"],
     "button functions": [goStore, goCave, fightDragon, easyStreet],
-    text: "You are in the town square. You see a sign that says \"Store\"."
+    text: "You are in the town square.You see a path that splits into four directions."
   },
   {
     // how do we get the buy weapon to update on the current price?
@@ -133,17 +135,40 @@ function goCave() {
   update(locations[2]);
   button4.style.display = "inline";
 }
+const storeIndex = locations.findIndex(location => location.name === "store");
 
 function buyHealth() {
-  if (gold >= 20) {
-    gold -= 20;
-    health += 15;
-    goldText.innerText = gold;
-    healthText.innerText = health;
+  if (health >= 200) {
+    if (gold >= 75) {
+      gold -= 75;
+      health += 50;
+      goldText.innerText = gold;
+      healthText.innerText = health;
+
+      // Update the button text directly in the store location
+      if (storeIndex !== -1) {
+        locations[storeIndex]["button text"][0] = "Buy 50 health (75 Yen)";
+        text.innerText = "You have full health. You can buy 50 health for 75 Yen.";
+
+        // Update the button text in the store location
+        update(locations[storeIndex]);
+      }
+    } else {
+      text.innerText = "You do not have enough Yen to buy health.";
+    }
   } else {
-    text.innerText = "You do not have enough Yen to buy health.";
+    if (gold >= 20) {
+      gold -= 20;
+      health += 15;
+      goldText.innerText = gold;
+      healthText.innerText = health;
+    } else {
+      text.innerText = "You do not have enough Yen to buy health.";
+    }
   }
 }
+
+
 
 
 function buyWeapon() {
@@ -155,12 +180,12 @@ function buyWeapon() {
       let newWeapon = weapons[currentWeapon].name;
       text.innerText = "You now have a " + newWeapon + ".";
       inventory.push(newWeapon);
-      text.innerText += " In your inventory you have: " + inventory;
+      text.innerText += " In your inventory you have the: " + inventory;
       weaponPrice += 30;
       inventoryCheck();
  // Update the "Buy Weapon" button text directly in the store location
 
- const storeIndex = locations.findIndex(location => location.name === "store");
+ 
  // the store index is the index of the store location in the locations array
 
  if (storeIndex !== -1) {  // if the store location is found
@@ -181,14 +206,14 @@ function buyWeapon() {
 }
 
 function inventoryCheck() {
- text.innerText = "You now have a " + weapons[currentWeapon].name + ".";
+ text.innerText = "You now have a " + weapons[currentWeapon].name + ". It has a power of " + weapons[currentWeapon].power;
 }
 
 function easyStreet () {
   restart();
   xp = 0;
   health = 200;
-  gold = 60;
+  gold = 75;
   currentWeapon = 0;
   inventory = ["stick"];
   goldText.innerText = gold;
@@ -201,7 +226,7 @@ function easyStreet () {
   text.style.color = "aqua";
   weaponPrice = 30;
   slimeDefeats = 0;
-  text.innerText = "You are on Easy Street. You have 200 health, 60 Yen, and a stick. You are ready to go on an adventure!";
+  text.innerText = "You are on Easy Street. You have 200 health, 75 Yen, and a stick. You are ready to go on an adventure!";
 // Function declaration for getBuyWeaponButtonText
 }
 
