@@ -51,14 +51,14 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to cave", "Fight dragon"],
-    "button functions": [goStore, goCave, fightDragon],
+    "button text": ["Go to store", "Go to cave", "Shadowthorn", "Easy Street"],
+    "button functions": [goStore, goCave, fightDragon, easyStreet],
     text: "You are in the town square. You see a sign that says \"Store\"."
   },
   {
     // how do we get the buy weapon to update on the current price?
     name: "store",
-    "button text": ["Buy 15 health (20 Yen)" , "Buy weapon for " + weaponPrice + " Yen", "Go to town square", "Inventory"],
+    "button text": ["Buy 15 health (20 Yen)" , "Buy weapon  (" + weaponPrice + " Yen)", "Go to town square", "Inventory"],
     "button functions": [buyHealth, buyWeapon, goTown, inventoryCheck],
     text: "You enter the store."
   },
@@ -120,7 +120,7 @@ function update(location) {
 function goTown() {
   update(locations[0]);
   button3.style.display = "inline";
-  button4.style.display = "none";
+  button4.style.display = "inline";
 }
 
 function goStore() {
@@ -168,7 +168,7 @@ function buyWeapon() {
  } // update the button text for the "Buy Weapon" button in the store location
 
 
-      button2.innerText = "Buy weapon for " + weaponPrice + " Yen";
+      button2.innerText = "Buy weapon  (" + weaponPrice + " Yen)";
      
     } else {
       text.innerText = "You do not have enough Yen to buy a weapon.";
@@ -184,9 +184,26 @@ function inventoryCheck() {
  text.innerText = "You now have a " + weapons[currentWeapon].name + ".";
 }
 
-
+function easyStreet () {
+  restart();
+  xp = 0;
+  health = 200;
+  gold = 60;
+  currentWeapon = 0;
+  inventory = ["stick"];
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+  monsterStats.style.background = "#c70d0d";
+  xpText.style.color = "blue";
+  healthText.style.color = "green";
+  goldText.style.color = "yellow";
+  text.style.color = "aqua";
+  weaponPrice = 30;
+  slimeDefeats = 0;
+  text.innerText = "You are on Easy Street. You have 200 health, 60 Yen, and a stick. You are ready to go on an adventure!";
 // Function declaration for getBuyWeaponButtonText
-
+}
 
 
 
@@ -221,7 +238,7 @@ function fightGuard() {
 function fightDragon() {
   button3.style.display = "none";
   fighting = 2;
-  
+  button4.style.display = "none";
   goFight();
   monsterStats.style.background = "linear-gradient(to right, #ff0000, #00ff00, #0000ff)";
   monsterStats.style.color = "white";
@@ -319,6 +336,7 @@ function defeatMonster() {
 
 function lose() {
   update(locations[5]);
+  button4.style.display = "none";
 }
 
 function winGame() {
@@ -335,6 +353,12 @@ function restart() {
   healthText.innerText = health;
   xpText.innerText = xp;
   monsterStats.style.background = "#c70d0d";
+  xpText.style.color = "black";
+  healthText.style.color = "black";
+  goldText.style.color = "black";
+  text.style.color = "white";
+  weaponPrice = 30;
+  slimeDefeats = 0;
   goTown();
 }
 

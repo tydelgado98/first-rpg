@@ -22,11 +22,17 @@ body {
   border: 1px solid #0a0a23;
   padding: 5px;
   color: #0a0a23;
+  
 }
 
 #stats{
   padding: 10px;
   font-size: 30px;
+}
+#controls {
+  display: flex;
+  
+
 }
 
 #monsterStats {
@@ -51,6 +57,11 @@ button {
   font-size: 20px;
   margin-top: 3px;
   margin-bottom: 2px;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 8px;
+  
+  
 }
 #button4{
   display: none;
