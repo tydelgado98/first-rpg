@@ -11,6 +11,8 @@ const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
+const picSection = document.querySelector("#pictureSection");
+const img = picSection.querySelector('img');
 
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
@@ -96,7 +98,7 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "Go to town square?"],
+    "button text": ["Number: 2", "Number: 8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "Welcome to the casino! Pick a number 2 or 8. If you they're in the list of 10 random numbers, you win 20 gold. If not, you lose 20 health."
   }
@@ -124,6 +126,7 @@ function goTown() {
   update(locations[0]);
   button3.style.display = "inline";
   button4.style.display = "inline";
+  img.src = "./images/townSquare.png"
 }
 
 function goStore() {
@@ -248,6 +251,7 @@ function sellWeapon() {
 function fightSlime() {
   button4.style.display = "none";
   fighting = 0;
+  img.src = "./images/slimeFight.png"
   goFight();
 }
 
@@ -348,7 +352,7 @@ function defeatMonster() {
     } else {
         xp += originalXPGain;
     }
-    health += 4;
+    health += 2;
     healthText.innerText = health;
     xpText.innerText = xp;
     killIndex = locations.findIndex(location => location.name === "kill monster");
