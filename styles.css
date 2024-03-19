@@ -1,20 +1,22 @@
 body {
-  background-color: #08190b;
+  background-color: #1f4455;
 }
 
 #text {
-  background-color: rgb(70, 43, 2);
+  background-color: hsl(0, 0%, 0%);;
   color: #ffffff;
   padding: 17px;
   font-size: 22px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #game {
   max-width: 50%;
   max-height: 900px;
-  background-color: rgb(240, 186, 106);
+  background-color: rgb(152, 216, 255);
   color: #ffffff;
-  margin: 200px auto 0px;
+  margin: 100px auto 0px;
   padding: 20px;
   border-radius: 20px;
  display: grid;
@@ -57,7 +59,7 @@ button {
   cursor: pointer;
   color: #0a0a23;
   background-color: #feac32;
-  background-image: linear-gradient(#f5b453, #855d20);
+  background-image: linear-gradient(#53d7f5, #205985);
   border: 3px solid #855d20(51, 25%, 90%);
   font-size: 20px;
   margin-top: 3px;
