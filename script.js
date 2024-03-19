@@ -280,6 +280,7 @@ function fightDragon() {
   monsterStats.style.color = "white";
   text.innerText = " ";
   text.innerText = "You are fighting the dragon. You can't run from this fight.";
+  img.src = "./images/dragon.png"
 }
 
 function goFight() {
