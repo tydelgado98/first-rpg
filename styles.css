@@ -86,9 +86,10 @@ img {
   #game {
     max-width: none;
     width: 80%;
-    height: 80vh; /* Set a custom height, such as 80% of the viewport height */
+    height: 30vh; /* Set a custom height, such as 80% of the viewport height */
     margin: 100px auto 0px;
     padding: 20px;
+    padding-bottom: 100px;
     border-radius: 20px;
   }
 }
