@@ -107,7 +107,21 @@ img {
 /* Cards are stacked on top of each other at 768px or smaller */
 @media screen and (max-width: 768px) {
   #game {
-    width: 100%;
-    height: 50%;
+    max-width: none;
+    width: 80%;
+    height: 30vh; /* Set a custom height, such as 80% of the viewport height */
+    margin: 500px auto 0px;
+    padding: 20px;
+    padding-bottom: 100px;
+    border-radius: 20px;
+  }
+  button {
+    font-size: 33px;
+  }
+  #text {
+    font-size: 30px;
+  }
+  #stats {
+    font-size: 40px;
   }
 }
