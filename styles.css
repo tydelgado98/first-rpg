@@ -84,8 +84,9 @@ img {
 
 @media screen and (max-width: 992px) {
   #game {
-    max-width: none; /* Remove the maximum width restriction */
-    width: 80%; /* Set a custom width */
+    max-width: none;
+    width: 80%;
+    height: 80vh; /* Set a custom height, such as 80% of the viewport height */
     margin: 100px auto 0px;
     padding: 20px;
     border-radius: 20px;
