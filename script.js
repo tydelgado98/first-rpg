@@ -253,12 +253,17 @@ function fightSlime() {
   fighting = 0;
   img.src = "./images/slimeFight.png"
   goFight();
+  text.innerText = " "
+  text.innerText = "These innocent looking slime are attacking you!"
 }
 
 function fightBeast() {
   button4.style.display = "none";
   fighting = 1;
   goFight();
+  img.src = "./images/fangedFight.png"
+  text.innerText = " "
+  text.innerText = "You are fighting some scary looking beast"
 }
 function fightGuard() {
   button4.style.display = "none";
