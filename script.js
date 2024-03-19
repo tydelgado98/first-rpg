@@ -269,6 +269,7 @@ function fightGuard() {
   button4.style.display = "none";
   fighting = 3;
   goFight();
+  img.src = "./images/knightFight.png"
 }
 function fightDragon() {
   button3.style.display = "none";
