@@ -261,6 +261,8 @@ function fightSlime() {
   goFight();
   text.innerText = " "
   text.innerText = "These innocent looking slime are attacking you!"
+  gameCss.style.background = "lightgreen";
+  document.body.style.background = "green";
 }
 
 function fightBeast() {
@@ -270,12 +272,16 @@ function fightBeast() {
   img.src = "./images/fang1.png"
   text.innerText = " "
   text.innerText = "You are fighting some scary looking beast"
+  gameCss.style.background = "tomato";
+  document.body.style.background = "blueviolet";
 }
 function fightGuard() {
   button4.style.display = "none";
   fighting = 3;
   goFight();
   img.src = "./images/guard1.png"
+  gameCss.style.background = "lightblue";
+  document.body.style.background = "aqua";
 }
 function fightDragon() {
   button3.style.display = "none";
@@ -287,6 +293,8 @@ function fightDragon() {
   text.innerText = " ";
   text.innerText = "You are fighting the dragon. You can't run from this fight.";
   img.src = "./images/serpant.png"
+  gameCss.style.background = "darkred";
+  document.body.style.background = "black";
 }
 
 function goFight() {
