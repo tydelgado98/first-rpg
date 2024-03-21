@@ -74,7 +74,8 @@ button {
   display: none;
 }
 img {
-  width: 500px;
+  max-width: 100%;
+  width: 800px;
   display: grid;
   margin: auto;
   height: 400px;
@@ -93,7 +94,7 @@ img {
     font-size: 20px;
   }
   img {
-    width: 300px;
+    width: 600px;
     height: 300px;
   }
 }
@@ -110,7 +111,7 @@ img {
     font-size: 15px;
 }
   img {
-    width: 200px;
+    width: 500px;
     height: 200px;
 }
 
@@ -136,14 +137,15 @@ button {
     background-color: #c41010;
     }
     #game {
-      max-width: 73%;
+      max-width: 100%;
       padding-bottom: 8px;
     }
     #text {
       font-size: 12px;
   }
     img {
-      width: 150px;
+      max-width: 100%;
+      width: 300px;
       height: 150px;
   }
   
