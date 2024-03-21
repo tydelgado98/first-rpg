@@ -13,6 +13,8 @@ const button3 = document.querySelector("#button3");
 const button4 = document.querySelector("#button4");
 const picSection = document.querySelector("#pictureSection");
 const img = picSection.querySelector('img');
+const gameCss = document.querySelector("#game")
+
 
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
@@ -124,15 +126,19 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  button2.style.display = "inline";
   button3.style.display = "inline";
   button4.style.display = "inline";
-  img.src = "./images/townSquare.png"
+  gameCss.style.background = "bisque";
+  document.body.style.background = " darkslateblue";
+  img.src = "./images/town4.png"
 }
 
 function goStore() {
 
   update(locations[1]);
   button4.style.display = "inline";
+  img.src = "./images/shop7.png"
 }
 
 function goCave() {
@@ -251,7 +257,7 @@ function sellWeapon() {
 function fightSlime() {
   button4.style.display = "none";
   fighting = 0;
-  img.src = "./images/slimeFight.png"
+  img.src = "./images/slime1.png"
   goFight();
   text.innerText = " "
   text.innerText = "These innocent looking slime are attacking you!"
@@ -261,7 +267,7 @@ function fightBeast() {
   button4.style.display = "none";
   fighting = 1;
   goFight();
-  img.src = "./images/fangedFight.png"
+  img.src = "./images/fang1.png"
   text.innerText = " "
   text.innerText = "You are fighting some scary looking beast"
 }
@@ -269,7 +275,7 @@ function fightGuard() {
   button4.style.display = "none";
   fighting = 3;
   goFight();
-  img.src = "./images/knightFight.png"
+  img.src = "./images/guard1.png"
 }
 function fightDragon() {
   button3.style.display = "none";
@@ -280,7 +286,7 @@ function fightDragon() {
   monsterStats.style.color = "white";
   text.innerText = " ";
   text.innerText = "You are fighting the dragon. You can't run from this fight.";
-  img.src = "./images/dragon.png"
+  img.src = "./images/serpant.png"
 }
 
 function goFight() {
@@ -374,6 +380,11 @@ function defeatMonster() {
 function lose() {
   update(locations[5]);
   button4.style.display = "none";
+  button2.style.display = "none";
+  img.src = "./images/lost2.png";
+  document.body.style.background = "red";
+  gameCss.style.background = "darkred"
+  
 }
 
 function winGame() {
